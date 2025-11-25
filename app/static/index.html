@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Classifier AI 🦁</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🦁 Animal Faces Classifier</h1>
+            <p>AI powered detection: Cat, Dog, or Wild Animal.</p>
+        </header>
+
+        <main class="card">
+            <div class="upload-area">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <label for="imageInput" class="upload-label">
+                    <span id="fileName">📁 Click here to upload an image...</span>
+                </label>
+            </div>
+
+            <button id="predictBtn" onclick="predictImage()">🔍 Analyze Image</button>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Consulting the AI Model...</p>
+            </div>
+
+            <div id="resultArea" class="hidden fade-in">
+                <h2>Prediction: <span id="predictionText" class="highlight">---</span></h2>
+                <p>Confidence: <span id="confidenceText">---</span>%</p>
+
+                <div class="details-box">
+                    <h3>Class Probabilities:</h3>
+                    <ul id="detailsList">
+                    </ul>
+                </div>
+            </div>
+
+            <div id="errorArea" class="hidden fade-in error-box">
+                <p id="errorText"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by TensorFlow & FastAPI 🚀</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

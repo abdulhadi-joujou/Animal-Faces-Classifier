@@ -1,21 +1,23 @@
-# 🦁 Animal Faces Classification API
+# 🦁 Animal Faces Classification (Full-Stack AI App)
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.10%2B-orange)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.95%2B-green)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.10%2B-orange?style=for-the-badge&logo=tensorflow)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.95%2B-green?style=for-the-badge&logo=fastapi)
+![HTML5](https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-yellow?style=for-the-badge&logo=html5)
 
-A high-performance Deep Learning project designed to classify animal faces into three categories: **Cat**, **Dog**, and **Wild Animal**. The model achieves an impressive accuracy of **~99.67%** using Transfer Learning with **MobileNetV2** and is deployed via a fast, asynchronous REST API using **FastAPI**.
+A production-ready **AI Web Application** capable of classifying animal faces (**Cat**, **Dog**, **Wild Animal**) with **~99.6% accuracy**. 
+
+This project demonstrates a complete Machine Learning pipeline: from training a **MobileNetV2** model using Transfer Learning, to deploying it via a **FastAPI** backend, and serving it through a modern, responsive **Frontend UI**.
 
 ---
 
 ## 🚀 Key Features
 
-* **State-of-the-Art Accuracy:** Achieved **99.67%** validation accuracy on the AFHQ dataset.
-* **Robust Model:** Trained using **Label Smoothing**, **L2 Regularization**, and extensive **Data Augmentation** to prevent overfitting.
-* **Fast Inference:** Powered by **MobileNetV2** (lightweight architecture) suitable for real-time applications.
-* **Modern API:** Built with **FastAPI** for high performance and automatic interactive documentation (Swagger UI).
-* **Clean Architecture:** Modular code structure separating the prediction engine from the API logic.
+* **🧠 High Accuracy:** Achieved **99.67%** validation accuracy on the AFHQ dataset.
+* **⚡ Optimized Inference:** Uses a manually reconstructed MobileNetV2 architecture for robust weight loading and fast CPU inference.
+* **🎨 Interactive UI:** A clean, responsive web interface (HTML/CSS/JS) for easy image uploading and visualization.
+* **🌐 REST API:** Fully documented API with Swagger UI support.
+* **🛡️ Robust Engineering:** Implemented strict file validation, error handling, and modular code structure.
 
 ---
 
@@ -24,116 +26,35 @@ A high-performance Deep Learning project designed to classify animal faces into 
 ```text
 Animal-Faces-Classifier/
 │
-├── 📂 venv/                     # Virtual Environment (Contains libraries, scripts, etc.)
-├── 📂 dataset/                  # Data Directory (Not uploaded to Git)
-│   ├── train/                   # Training images
-│   └── val/                     # Validation images
+├── 📂 venv/                     # Virtual Environment (Local only).
+├── 📂 dataset/                  # Training Dataset (Local only, ignored by Git).
 │
-├── 📓 model_training.ipynb      # Jupyter Notebook for training & visualization.
-├── 📄 README.md                 # Project documentation.
+├── 📓 model_training.ipynb      # Jupyter Notebook: Training pipeline & Visualization.
+├── 📄 README.md                 # Project Documentation.
 ├── 📄 .gitignore                # Git ignore rules.
 │
-└── 📂 app/                      # Main Application Directory
-    ├── 📜 main.py               # FastAPI entry point.
-    ├── 📜 prediction_engine.py  # Model loading and inference logic.
-    ├── 📄 requirements.txt      # Python dependencies.
+└── 📂 app/                      # Main Application Source Code
+    ├── 📜 main.py               # FastAPI Server & Entry Point.
+    ├── 📜 prediction_engine.py  # AI Logic (Model loading & Inference).
+    ├── 📄 requirements.txt      # Python Dependencies.
     │
-    └── 📂 models/               # Model artifacts
-        ├── 📦 animal_faces_ultimate.keras    # The trained model file.
-        └── 📄 class_names.txt           # List of class labels.
-🛠️ Installation & Setup
-Follow these steps to run the project locally:
-
-1. Clone the Repository
-Bash
-
-git clone https://github.com/abdulhadi-joujou/Animal-Faces-Classifier.git
+    ├── 📂 models/               # Model Artifacts
+    │   ├── 📦 animal_faces_ultimate.keras
+    │   └── 📄 class_names.txt
+    │
+    └── 📂 static/               # Frontend Assets (Web Interface)
+        ├── 📄 index.html
+        ├── 📄 style.css
+        └── 📄 script.js
+🛠️ Installation & Setup1. Clone the RepositoryBashgit clone [https://github.com/YourUsername/Animal-Faces-Classifier.git](https://github.com/YourUsername/Animal-Faces-Classifier.git)
 cd Animal-Faces-Classifier
-2. Set Up Virtual Environment (Recommended)
-Bash
-
-# Create virtual environment
-python -m venv venv
-
-# Activate it (Windows)
-venv\Scripts\activate
-
-# Activate it (Mac/Linux)
+2. Set Up Virtual EnvironmentIt is highly recommended to use a virtual environment to manage dependencies.Windows:PowerShellpython -m venv venv
+.\venv\Scripts\activate
+Mac / Linux:Bashpython3 -m venv venv
 source venv/bin/activate
-3. Install Dependencies
-Navigate to the app directory and install the required packages:
-
-Bash
-
-cd app
+3. Install DependenciesNavigate to the app directory and install the required packages:Bashcd app
 pip install -r requirements.txt
-🏃‍♂️ Running the Server
-Start the API server using Uvicorn:
-
-Bash
-
-python main.py
-Alternatively, you can run: uvicorn main:app --reload
-
-The server will start at: http://localhost:8000
-
-📖 API Usage
-Once the server is running, you can test the API using the built-in Swagger UI:
-
-Open your browser and go to: http://localhost:8000/docs
-
-Click on the POST /predict endpoint.
-
-Click "Try it out".
-
-Upload an image (JPG/PNG).
-
-Click "Execute".
-
-Sample JSON Response:
-JSON
-
-{
-  "prediction": "Dog",
-  "confidence": 99.85,
-  "details": {
-    "Cat": 0.05,
-    "Dog": 99.85,
-    "Wild": 0.10
-  },
-  "filename": "my_puppy.jpg"
-}
-🧠 Model Training Details
-The model was trained using the AFHQ (Animal Faces HQ) dataset.
-
-Base Model: MobileNetV2 (Pre-trained on ImageNet).
-
-Input Size: 224x224 pixels.
-
-Optimizer: Adam.
-
-Loss Function: Categorical Crossentropy (with Label Smoothing=0.1).
-
-Techniques Used:
-
-Frozen Base Training (Phase 1).
-
-Global Average Pooling.
-
-Dropout (0.3) for regularization.
-
-Performance Metrics: | Metric | Score | | :--- | :--- | | Validation Accuracy | 99.67% | | Validation Loss | 0.3100 |
-
-💻 Technologies Used
-Deep Learning: TensorFlow, Keras.
-
-Backend Framework: FastAPI, Uvicorn.
-
-Image Processing: Pillow (PIL), NumPy.
-
-Environment: Python 3.x.
-
-🤝 Contributing 
-Contributions are welcome! Please feel free to submit a Pull Request.
+🏃‍♂️ Running the AppStart the server using the Python command:Bashpython main.py
+You should see a message indicating the server is running at http://0.0.0.0:8000🎮 How to UseOption 1: The Web Interface (User Friendly)Open your browser and go to: http://localhost:8000Click the upload area to select an image.Click "Analyze Image".The AI will display the prediction, confidence score, and probability breakdown.Option 2: API Documentation (For Developers)Go to: http://localhost:8000/docsUse the interactive Swagger UI to test the /predict endpoint directly.🧠 Model DetailsThe model was trained using Transfer Learning on the MobileNetV2 architecture.ParameterValueBase ModelMobileNetV2 (ImageNet Weights)Input Shape(224, 224, 3)Training StrategyFrozen Base (Feature Extraction)Epochs12Batch Size32Final Val Accuracy99.67%Training Graphs:(See model_training.ipynb for detailed Loss/Accuracy curves and Confusion Matrix)🤝 ContributingContributions, issues, and feature requests are welcome!Feel free to check the issues page.
 
 Author: Abdulhadi Joujou
